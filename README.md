@@ -6,7 +6,7 @@ Data:
 Use seasons 1995-2019
 
 CSV that looks like:
-  year,round,team1,seed(team1),team2,seed(team2),score,SRS(team1),RPI(team1),SRS(team2),RPI(team2)
+  year,round,team1,seed(team1),score1, team2,seed(team2),score2, score differential,SRS(team1),RPI(team1),SRS(team2),RPI(team2)
   
  
   
