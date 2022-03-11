@@ -9,4 +9,9 @@ for year in years:
     df_year["year"] = year
     df = pd.concat([df, df_year])
 
+drop = [0, 3, 4, 5, 6, 7, 8, 9, 11, 15, 16, 17, 19, 20, 21]
+df = df.drop(df.columns[drop], axis = 1)
+
+df = df.rename(columns={'School': 'team', 'Conf': 'conference', 'SOS': 'sos', 'OSRS': 'osrs', 'DSRS': 'dsrs', 'SRS': 'srs'})
+
 df.to_csv(os.path.join("data", "clean", "team-ratings.csv"), index = False)
