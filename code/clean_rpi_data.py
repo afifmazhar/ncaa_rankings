@@ -2,8 +2,8 @@ import csv
 import os
 import pandas as pd
 
-INPUT_DIR = r"C:\Users\sliff\PycharmProjects\ncaa\data\raw\rpi"
-OUTPUT_DIR = r"C:\Users\sliff\PycharmProjects\ncaa\data\clean"
+INPUT_DIR = os.path.join("data", "raw", "rpi")
+OUTPUT_DIR = os.path.join("data", "clean")
 OUTPUT_PATH = os.path.join(OUTPUT_DIR, "rpi_clean_1994_2019.csv")
 
 if __name__ == '__main__':
