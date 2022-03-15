@@ -1,3 +1,4 @@
+from dataclasses import replace
 import os
 import pandas as pd
 
@@ -17,3 +18,7 @@ df.to_csv(os.path.join("data", "clean", "team-ratings.csv"), index = False)
 
 print(df)
 
+school = df.iloc[1]
+school.replace(to_replace='state', value='st', inplace=True, limit=None, regex=False)
+
+print(school)
