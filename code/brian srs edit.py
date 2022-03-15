@@ -18,7 +18,11 @@ df.to_csv(os.path.join("data", "clean", "team-ratings.csv"), index = False)
 
 print(df)
 
-school = df.iloc[1]
-school.replace(to_replace='state', value='st', inplace=True, limit=None, regex=False)
 
-print(school)
+
+df['School'] = df['School'].str.replace('state', 'st')
+
+print(df['School'])
+
+
+
