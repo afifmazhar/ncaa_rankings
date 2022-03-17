@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 
-IN_PATH = os.path.join("data", "clean", "team-ratings.csv")
+#os.chdir("../..")
+IN_PATH = os.path.join("data/clean", "team-ratings.csv")
 df = pd.read_csv(IN_PATH)
 s_plot = plt.scatter(x = df.osrs, y = df.dsrs, c = df.conference.astype('category').cat.codes)
 plt.xlabel("osrs")
