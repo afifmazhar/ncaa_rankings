@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 
-#os.chdir("../../")
+os.chdir("../../")
 IN_PATH = os.path.join("data/clean", "game_results_clean.csv")
 
 df = pd.read_csv(IN_PATH)
