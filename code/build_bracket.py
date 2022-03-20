@@ -58,7 +58,7 @@ def build_bracket():
 
     for i in list1:
         for n in range(1, 5):
-            if (n == 1 and i == 5) or (n == 2 and i == 3) or (n == 3 and i == 1) or (n == 4 and i == 1):
+            if (n == 1 and i == 6) or (n == 2 and i == 5) or (n == 3 and i == 1) or (n == 4 and i == 1):
                 continue
             else:
                 matchup_dict[list1.index(i) + 5 + ((n - 1) * 8)] = \
