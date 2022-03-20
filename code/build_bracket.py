@@ -29,9 +29,10 @@ def pick_round(game_lower, game_upper):
     """This function picks one round of games by looping over matchup_dict. The upper and lower bounds of game numbers
     for a given round are used as arguments. The winner_dict dictionary is updated to reflect the projected winners of
     the round. There is no return value."""
-
-    for i in range(game_lower, game_upper):
-        matchup_dict[i] = [winner_dict[(2 * i) - 69], winner_dict[(2 * i) - 68]]
+    
+    if game_lower >= 37:
+        for i in range(game_lower, game_upper):
+            matchup_dict[i] = [winner_dict[(2 * i) - 69], winner_dict[(2 * i) - 68]]
 
     for i in range(game_lower, game_upper):
         winner_dict[i] = pick_winner(matchup_dict[i])
