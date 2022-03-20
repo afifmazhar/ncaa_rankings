@@ -1,6 +1,9 @@
 import pandas as pd
 
 df = pd.dataframe()
+matchup_dict = {}
+winner_dict = {}
+region_dict = {1: "west", 2: "east", 3: "midwest", 4: "south"}
 
 
 def rating(team):
@@ -13,7 +16,7 @@ def rating(team):
 
 def pick_winner(matchup):
     """This function picks the winner of one game by calling rating() on both teams in the matchup. The projected
-    winning team is returned. The dataframe reference is hard-coded into the rating() function."""
+    winning team is returned."""
 
     if rating(matchup[0]) > rating(matchup[1]):
         return_value = matchup[0]
@@ -25,7 +28,7 @@ def pick_winner(matchup):
 def pick_round(game_lower, game_upper):
     """This function picks one round of games by looping over matchup_dict. The upper and lower bounds of game numbers
     for a given round are used as arguments. The winner_dict dictionary is updated to reflect the projected winners of
-    the round. There is no return value. The dataframe reference is hard-coded into the rating() function."""
+    the round. There is no return value."""
 
     for i in range(game_lower, game_upper):
         matchup_dict[i] = [winner_dict[(2 * i) - 69], winner_dict[(2 * i) - 68]]
@@ -34,10 +37,38 @@ def pick_round(game_lower, game_upper):
         winner_dict[i] = pick_winner(matchup_dict[i])
 
 
+def build_bracket():
+    """This function builds up the play-in bracket, picks the play-in winners using pick_round, and builds up the main
+    bracket. There is no argument or return value. The dataframe is must be properly scoped so that the function can
+    access it."""
+
+    matchup_dict[1] = df.index[(df["region" == region_dict[1]]) & (df["seed" == 11])].tolist()
+    matchup_dict[2] = df.index[(df["region" == region_dict[2]]) & (df["seed" == 12])].tolist()
+    matchup_dict[3] = df.index[(df["region" == region_dict[3]]) & (df["seed" == 16])].tolist()
+    matchup_dict[4] = df.index[(df["region" == region_dict[4]]) & (df["seed" == 16])].tolist()
+
+    pick_round(1, 5)
+
+    matchup_dict[9] = [df.index[(df["region" == region_dict[1]]) & (df["seed" == 6])], winner_dict[1]]
+    matchup_dict[15] = [df.index[(df["region" == region_dict[2]]) & (df["seed" == 5])], winner_dict[2]]
+    matchup_dict[21] = [df.index[(df["region" == region_dict[3]]) & (df["seed" == 1])], winner_dict[3]]
+    matchup_dict[29] = [df.index[(df["region" == region_dict[4]]) & (df["seed" == 1])], winner_dict[4]]
+
+    list1 = [1, 8, 5, 4, 6, 3, 7, 2]
+
+    for i in list1:
+        for n in range(1, 5):
+            if (n == 1 and i == 5) or (n == 2 and i == 3) or (n == 3 and i == 1) or (n == 4 and i == 1):
+                continue
+            else:
+                matchup_dict[list1.index(i) + 5 + ((n - 1) * 8)] = \
+                    [df.index[(df["region" == region_dict[n]]) & (df["seed" == i])],
+                     df.index[(df["region" == region_dict[n]]) & (df["seed" == (17 - i)])]]
+
+
 def pick_bracket():
-    """This function generates the entire bracket with successive calls to pick_round. It must be called after the
-    play-in games have been picked using pick_round(). There is no argument or return value. The dataframe reference is
-    hard-coded into the rating() function."""
+    """This function fills out entire bracket with successive calls to pick_round. It must be called after
+    build_bracket. There is no argument or return value."""
 
     pick_round(5, 37)
     pick_round(37, 53)
@@ -49,47 +80,5 @@ def pick_bracket():
 
 if __name__ == '__main__':
 
-    matchup_dict = {}
-    winner_dict = {}
-
-    matchup_dict[1] = ["", ""]
-    matchup_dict[2] = ["", ""]
-    matchup_dict[3] = ["", ""]
-    matchup_dict[4] = ["", ""]
-
-    pick_round(1, 5)
-
-    matchup_dict[5] = ["", ""]
-    matchup_dict[6] = ["", ""]
-    matchup_dict[7] = ["", ""]
-    matchup_dict[8] = ["", ""]
-    matchup_dict[9] = ["", ""]
-    matchup_dict[10] = ["", ""]
-    matchup_dict[11] = ["", ""]
-    matchup_dict[12] = ["", ""]
-    matchup_dict[13] = ["", ""]
-    matchup_dict[14] = ["", ""]
-    matchup_dict[15] = ["", ""]
-    matchup_dict[16] = ["", ""]
-    matchup_dict[17] = ["", ""]
-    matchup_dict[18] = ["", ""]
-    matchup_dict[19] = ["", ""]
-    matchup_dict[20] = ["", ""]
-    matchup_dict[21] = ["", ""]
-    matchup_dict[22] = ["", ""]
-    matchup_dict[23] = ["", ""]
-    matchup_dict[24] = ["", ""]
-    matchup_dict[25] = ["", ""]
-    matchup_dict[26] = ["", ""]
-    matchup_dict[27] = ["", ""]
-    matchup_dict[28] = ["", ""]
-    matchup_dict[29] = ["", ""]
-    matchup_dict[30] = ["", ""]
-    matchup_dict[31] = ["", ""]
-    matchup_dict[32] = ["", ""]
-    matchup_dict[33] = ["", ""]
-    matchup_dict[34] = ["", ""]
-    matchup_dict[35] = ["", ""]
-    matchup_dict[36] = ["", ""]
-
+    build_bracket()
     pick_bracket()
