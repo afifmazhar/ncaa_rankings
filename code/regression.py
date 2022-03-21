@@ -14,12 +14,12 @@ y = game_results["score_diff"]
 ## creates the regression
 regr = LinearRegression(fit_intercept = False).fit(x, y)
 
-##create averages
+## create averages
 osrs_avg = (regr.coef_[0] - regr.coef_[2])/2
 dsrs_avg = (regr.coef_[1] - regr.coef_[3])/2
 seed_diff = regr.coef_[4]
 
-##export coefficients
+## export coefficients
 coefficients = {"seed_diff":[seed_diff], "osrs_avg":[osrs_avg], "dsrs_avg":[dsrs_avg]}
 df = pd.DataFrame(data = coefficients)
 
