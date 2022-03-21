@@ -10,5 +10,5 @@ for w in w_names:
     df2.loc[df2["team"] == w, "team"] = c_names[w_names.index(w)]
 bracket_data = pd.merge(df1, df2[["team", "osrs", "dsrs"]], on = "team",
                         how = "left")
-bracket_data.rename(columns = {'osrs_y': 'osrs', 'dsrs_y': 'dsrs'}, inplace = True)
+bracket_data.rename(columns = {"osrs_y": "osrs", "dsrs_y": "dsrs"}, inplace = True)
 bracket_data.to_csv(os.path.join("data/clean", "bracket_data.csv"), index = False)
