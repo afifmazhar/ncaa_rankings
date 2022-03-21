@@ -25,13 +25,18 @@ def pick_winner(matchup):
     return return_value
 
 
+def build_round(game_lower, game_upper):
+    """This function builds up matchups for a given round based on the upper and lower bounds of game numbers for a
+    given round are used as arguments. There is no return value."""
+
+    for i in range(game_lower, game_upper):
+        matchup_dict[i] = [winner_dict[(2 * i) - 69], winner_dict[(2 * i) - 68]]
+
+
 def pick_round(game_lower, game_upper):
     """This function picks one round of games by looping over matchup_dict. The upper and lower bounds of game numbers
     for a given round are used as arguments. The winner_dict dictionary is updated to reflect the projected winners of
     the round. There is no return value."""
-
-    for i in range(game_lower, game_upper):
-        matchup_dict[i] = [winner_dict[(2 * i) - 69], winner_dict[(2 * i) - 68]]
 
     for i in range(game_lower, game_upper):
         winner_dict[i] = pick_winner(matchup_dict[i])
@@ -71,10 +76,15 @@ def pick_bracket():
     build_bracket. There is no argument or return value."""
 
     pick_round(5, 37)
+    build_round(37, 53)
     pick_round(37, 53)
+    build_round(53, 61)
     pick_round(53, 61)
+    build_round(61, 65)
     pick_round(61, 65)
+    build_round(65, 67)
     pick_round(65, 67)
+    build_round(67, 68)
     pick_round(67, 68)
 
 
