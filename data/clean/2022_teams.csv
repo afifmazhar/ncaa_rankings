@@ -1,0 +1,69 @@
+team,region,seed
+Gonzaga,west,1
+Duke,west,2
+Texas Tech,west,3
+Arkansas,west,4
+Connecticut,west,5
+Alabama,west,6
+Michigan State,west,7
+Boise State,west,8
+Memphis,west,9
+Davidson,west,10
+Notre Dame,west,11
+Rutgers,west,11
+New Mexico State,west,12
+Vermont,west,13
+Montana State,west,14
+Cal State Fullerton,west,15
+Georgia State,west,16
+Baylor,east,1
+Kentucky,east,2
+Purdue,east,3
+UCLA,east,4
+St. Mary's (Cal.),east,5
+Texas,east,6
+Murray State,east,7
+North Carolina,east,8
+Marquette,east,9
+San Francisco,east,10
+Virginia Tech,east,11
+Wyoming,east,12
+Indiana,east,12
+Akron,east,13
+Yale,east,14
+Saint Peter's,east,15
+Norfolk State,east,16
+Kansas,midwest,1
+Auburn,midwest,2
+Wisconsin,midwest,3
+Providence,midwest,4
+Iowa,midwest,5
+LSU,midwest,6
+Southern California,midwest,7
+San Diego State,midwest,8
+Creighton,midwest,9
+Miami (Fla.),midwest,10
+Iowa State,midwest,11
+Richmond,midwest,12
+South Dakota State,midwest,13
+Colgate,midwest,14
+Jacksonville State,midwest,15
+Texas Southern,midwest,16
+Texas A&M-Corpus Christi,midwest,16
+Arizona,south,1
+Villanova,south,2
+Tennessee,south,3
+Illinois,south,4
+Houston,south,5
+Colorado State,south,6
+Ohio State,south,7
+Seton Hall,south,8
+TCU,south,9
+Loyola (Ill.),south,10
+Michigan,south,11
+Alabama-Birmingham,south,12
+Chattanooga,south,13
+Longwood,south,14
+Delaware,south,15
+Wright State,south,16
+Bryant,south,16
