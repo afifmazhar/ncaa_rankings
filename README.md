@@ -7,11 +7,11 @@ The goal of this analysis is to create a NCAA team ranking system that is more a
 
 **Project Description:**
 
-This project uses historical team rankings and historical tournament performance to weight the importance of various team rankings and thereby create a new hybrid team ranking system to predict the outcome of march madness 2022.
+This project uses historical team rankings and historical tournament performance to weight the importance of various team rankings and thereby create a new hybrid team ranking system to predict the outcome of March Madness 2022.
 
 **Data:**
 
-_Data collection methods must be understood and clearly documented. You should read and summarize the documentation of the data, make sure that you understand and document all columns/features that are relevant to your analysis. You should understand and summarize what isn’t in the data too._
+_summarize the documentation of the data, make sure that you understand and document all columns/features that are relevant to your analysis. You should understand and summarize what isn’t in the data too._
 
 The ranking data used is SRS Team Ratings and RPI team ratings from 1994 to 2019. This data was downloaded from - https://www.sports-reference.com/cbb/seasons/2022-ratings.html & 
 
@@ -24,7 +24,8 @@ This data would be more accurate and comprehensive if it included information ab
 
 **Cleaning:**
 
-Data sets are cleaned and combined, matching team names to their ratings for each historical March Madness game.
+Data sets are cleaned of erroneous lines, hyperlinks, and superflous columns.
+Data frames are then merged, matching team names to their ratings for each historical March Madness game.
 The cleaned and merged CSV will follow the format - year,round,team1,seed1,score1,team2,seed2,score2,score_diff,SRS1,RPI1,SRS2,RPI2
 
 **Analysis & Methodology:**
@@ -32,6 +33,7 @@ The cleaned and merged CSV will follow the format - year,round,team1,seed1,score
 Once every team in every historical game is associated with its two ratings in each given year, we use an OLS regression where score differential is regressed on the SRS and RPI of teams one and two.
 
 pts_team1 - pts_team2 = b0 + b1(SRS1) + b2(SRS2) + b3(RPI1) + b4(RPI2) + e
+
 This will give us the proper weighting of SRS and RPI for our own rankings.
 
 The formula for our rating will be as follows: rank_team1 = b1(SRS1) + b3(RPI1)
