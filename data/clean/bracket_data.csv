@@ -1,0 +1,69 @@
+team,region,seed,osrs,dsrs
+Gonzaga,west,1,20.29,6.59
+Duke,west,2,12.89,7.33
+Texas Tech,west,3,6.76,13
+Arkansas,west,4,11.07,5.84
+Connecticut,west,5,9.17,8.09
+Alabama,west,6,15.45,0.56
+Michigan State,west,7,6.98,6.77
+Boise State,west,8,2.39,10.47
+Memphis,west,9,9.74,4.85
+Davidson,west,10,6.08,4.05
+Notre Dame,west,11,4.78,6.59
+Rutgers,west,11,0.73,8.63
+New Mexico State,west,12,2.07,4.33
+Vermont,west,13,2.64,4.06
+Montana State,west,14,-0.07,-0.15
+Cal State Fullerton,west,15,-0.86,0.39
+Georgia State,west,16,-1.41,0.42
+Baylor,east,1,12.08,10.43
+Kentucky,east,2,13.81,8.6
+Purdue,east,3,14.42,5.94
+UCLA,east,4,10.42,10.02
+St. Mary's (Cal.),east,5,1.22,13.73
+Texas,east,6,2.93,14.69
+Murray State,east,7,3.9,6.72
+North Carolina,east,8,12.15,1.03
+Marquette,east,9,9.83,3.34
+San Francisco,east,10,8.14,6.81
+Virginia Tech,east,11,2.41,11.01
+Wyoming,east,12,5.12,5.12
+Indiana,east,12,4.7,8.73
+Akron,east,13,-4.39,4.12
+Yale,east,14,0.31,-0.33
+Saint Peter's,east,15,-5.37,5.71
+Norfolk State,east,16,-2.55,-0.35
+Kansas,midwest,1,15.85,5.41
+Auburn,midwest,2,13.32,7.69
+Wisconsin,midwest,3,5.54,8.71
+Providence,midwest,4,6.67,6.89
+Iowa,midwest,5,16.44,2.57
+LSU,midwest,6,6.46,12.41
+Southern California,midwest,7,6.49,7.02
+San Diego State,midwest,8,-0.14,13.91
+Creighton,midwest,9,2.38,7.91
+Miami (Fla.),midwest,10,8.63,1.71
+Iowa State,midwest,11,1.84,11.36
+Richmond,midwest,12,4.01,2.73
+South Dakota State,midwest,13,11.62,-4.21
+Colgate,midwest,14,1.95,-1.39
+Jacksonville State,midwest,15,-1.15,1.45
+Texas Southern,midwest,16,-4.37,0.33
+Texas A&M-Corpus Christi,midwest,16,-3.18,-3.84
+Arizona,south,1,18.2,6.34
+Villanova,south,2,7.53,12.38
+Tennessee,south,3,8.44,11.98
+Illinois,south,4,10.46,7.68
+Houston,south,5,8.54,13.55
+Colorado State,south,6,7.57,4.93
+Ohio State,south,7,8.78,6.04
+Seton Hall,south,8,6.93,7.68
+TCU,south,9,3.15,9.72
+Loyola (Ill.),south,10,4.67,9.68
+Michigan,south,11,7.46,7.02
+Alabama-Birmingham,south,12,7.99,3.09
+Chattanooga,south,13,1.01,5.16
+Longwood,south,14,0.31,-0.08
+Delaware,south,15,2.07,-1.8
+Wright State,south,16,2.06,-4.13
+Bryant,south,16,4.3,-9.53
