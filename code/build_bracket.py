@@ -4,21 +4,16 @@ df = pd.dataframe()
 matchup_dict = {}
 winner_dict = {}
 region_dict = {1: "west", 2: "east", 3: "midwest", 4: "south"}
-
-
-def rating(team):
-    """This function takes a string team name as an argument and returns the rating of that team by looking it up in the
-    dataframe. The dataframe is must be properly scoped so that the function can access it."""
-
-    rating = df.loc[team, "rating"]
-    return rating
+coef_list = []
 
 
 def pick_winner(matchup):
     """This function picks the winner of one game by calling rating() on both teams in the matchup. The projected
     winning team is returned."""
 
-    if rating(matchup[0]) > rating(matchup[1]):
+    if (df.loc[matchup[0], "seed"] - df.loc[matchup[1], "seed"]) * coef_list[0] + \
+            df.loc[matchup[0], "osrs"] * coef_list[1] - df.loc[matchup[1], "osrs"] * coef_list[1] + \
+            df.loc[matchup[0], "dsrs"] * coef_list[2] - df.loc[matchup[1], "dsrs"] * coef_list[2] > 0:
         return_value = matchup[0]
     else:
         return_value = matchup[1]
