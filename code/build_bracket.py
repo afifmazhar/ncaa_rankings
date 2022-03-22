@@ -22,7 +22,7 @@ def pick_winner(matchup):
     """This function picks the winner of one game by applying the coefficients from the regression to each team's ratings. The projected
     winning team is returned as a string."""
 
-    if (df.at[matchup[0], "seed"] - df.at[matchup[1], "seed"]) * float(coef_dict['seed_diff']) + \
+    if (df.at[matchup[1], "seed"] - df.at[matchup[0], "seed"]) * float(coef_dict['seed_diff']) + \
             df.at[matchup[0], "osrs"] * float(coef_dict["osrs_avg"]) - \
             df.at[matchup[1], "osrs"] * float(coef_dict["osrs_avg"]) + \
             df.at[matchup[0], "dsrs"] * float(coef_dict["dsrs_avg"]) - \
