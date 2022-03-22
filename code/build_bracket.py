@@ -1,19 +1,31 @@
 import pandas as pd
+import csv
 
-df = pd.dataframe()
+INPUT_DIR = os.path.join("data", "clean")
+OUTPUT_DIR = os.path.join("data", "clean")
+
+
+df = pd.read_csv(os.path.join(INPUT_DIR, "bracket_data.csv"), index_col="team")
 matchup_dict = {}
 winner_dict = {}
 region_dict = {1: "west", 2: "east", 3: "midwest", 4: "south"}
-coef_list = []
+
+
+with open(os.path.join(INPUT_DIR, "coefficients.csv"), 'r') as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        coef_dict = dict(row)
 
 
 def pick_winner(matchup):
-    """This function picks the winner of one game by calling rating() on both teams in the matchup. The projected
-    winning team is returned."""
+    """This function picks the winner of one game by applying the coefficients from the regression to each team's ratings. The projected
+    winning team is returned as a string."""
 
-    if (df.loc[matchup[0], "seed"] - df.loc[matchup[1], "seed"]) * coef_list[0] + \
-            df.loc[matchup[0], "osrs"] * coef_list[1] - df.loc[matchup[1], "osrs"] * coef_list[1] + \
-            df.loc[matchup[0], "dsrs"] * coef_list[2] - df.loc[matchup[1], "dsrs"] * coef_list[2] > 0:
+    if (df.at[matchup[0], "seed"] - df.at[matchup[1], "seed"]) * float(coef_dict['seed_diff']) + \
+            df.at[matchup[0], "osrs"] * float(coef_dict["osrs_avg"]) - \
+            df.at[matchup[1], "osrs"] * float(coef_dict["osrs_avg"]) + \
+            df.at[matchup[0], "dsrs"] * float(coef_dict["dsrs_avg"]) - \
+            df.at[matchup[1], "dsrs"] * float(coef_dict["dsrs_avg"]) > 0:
         return_value = matchup[0]
     else:
         return_value = matchup[1]
@@ -42,28 +54,26 @@ def build_bracket():
     bracket. There is no argument or return value. The dataframe is must be properly scoped so that the function can
     access it."""
 
-    matchup_dict[1] = df.index[(df["region" == region_dict[1]]) & (df["seed" == 11])].tolist()
-    matchup_dict[2] = df.index[(df["region" == region_dict[2]]) & (df["seed" == 12])].tolist()
-    matchup_dict[3] = df.index[(df["region" == region_dict[3]]) & (df["seed" == 16])].tolist()
-    matchup_dict[4] = df.index[(df["region" == region_dict[4]]) & (df["seed" == 16])].tolist()
+    matchup_dict[1] = df.index[(df["region"] == region_dict[1]) & (df['seed'] == 11)].values[:]
+    matchup_dict[2] = df.index[(df["region"] == region_dict[2]) & (df["seed"] == 12)].values[:]
+    matchup_dict[3] = df.index[(df["region"] == region_dict[3]) & (df["seed"] == 16)].values[:]
+    matchup_dict[4] = df.index[(df["region"] == region_dict[4]) & (df["seed"] == 16)].values[:]
 
     pick_round(1, 5)
 
-    matchup_dict[9] = [df.index[(df["region" == region_dict[1]]) & (df["seed" == 6])], winner_dict[1]]
-    matchup_dict[15] = [df.index[(df["region" == region_dict[2]]) & (df["seed" == 5])], winner_dict[2]]
-    matchup_dict[21] = [df.index[(df["region" == region_dict[3]]) & (df["seed" == 1])], winner_dict[3]]
-    matchup_dict[29] = [df.index[(df["region" == region_dict[4]]) & (df["seed" == 1])], winner_dict[4]]
+    matchup_dict[9] = [df.index[(df["region"] == region_dict[1]) & (df['seed'] == 6)].values[0], winner_dict[1]]
+    matchup_dict[15] = [df.index[(df["region"] == region_dict[2]) & (df['seed'] == 5)].values[0], winner_dict[2]]
+    matchup_dict[21] = [df.index[(df["region"] == region_dict[3]) & (df['seed'] == 1)].values[0], winner_dict[3]]
+    matchup_dict[29] = [df.index[(df["region"] == region_dict[4]) & (df['seed'] == 1)].values[0], winner_dict[4]]
 
     list1 = [1, 8, 5, 4, 6, 3, 7, 2]
 
     for i in list1:
         for n in range(1, 5):
-            if (n == 1 and i == 6) or (n == 2 and i == 5) or (n == 3 and i == 1) or (n == 4 and i == 1):
-                continue
-            else:
+            if not ((n == 1 and i == 6) or (n == 2 and i == 5) or (n == 3 and i == 1) or (n == 4 and i == 1)):
                 matchup_dict[list1.index(i) + 5 + ((n - 1) * 8)] = \
-                    [df.index[(df["region" == region_dict[n]]) & (df["seed" == i])],
-                     df.index[(df["region" == region_dict[n]]) & (df["seed" == (17 - i)])]]
+                    [df.index[(df["region"] == region_dict[n]) & (df['seed'] == i)].values[0],
+                     df.index[(df["region"] == region_dict[n]) & (df['seed'] == (17 - i))].values[0]]
 
 
 def pick_bracket():
@@ -87,3 +97,11 @@ if __name__ == '__main__':
 
     build_bracket()
     pick_bracket()
+
+    with open(os.path.join(OUTPUT_DIR, "winners.csv"), 'w') as file:
+        for key in winner_dict.keys():
+            file.write("%s, %s\n" % (key, winner_dict[key]))
+
+    with open(os.path.join(OUTPUT_DIR, "matchups.csv"), 'w') as file:
+        for key in matchup_dict.keys():
+            file.write("%s, %s\n" % (key, matchup_dict[key]))
