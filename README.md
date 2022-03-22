@@ -19,6 +19,8 @@ We then compute our regression by running `python3 code/regression.py`. This cre
 
 Finally, running `python3 code/bracket-read-file.py` creates `data/clean/bracket_data.csv` which combines 2022 SRS data (again, offensive and defensive) with the 2022 tournament bracket. Running `python3 code/build_bracket.py` makes use of this 2022 bracket data (along with our regression coefficients from above) and determines the winners of each tournament matchup. The script creates two output .csv files (`data/clean/matchups.csv` and `data/clean/winners.csv`) which store the predicted tournaments matchups and winners for each game of the 2022 March Madness tournament.
 
+To re-create the data tables, run `python3 code/visual_code/data-table-matchups.py` to obtain a table for all tournament game matchups.  Likewise, run `python3 code/visual_code/final-data-table.py` to obtain a table for the winners of eery tournament game.
+
 **Data:**
 
 The documentation of the ratings data can be briefly summarized. 
