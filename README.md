@@ -3,11 +3,11 @@ Data Analysis Project for NCAA rankings
 
 **Goal of the Analysis:**
 
-The goal of this analysis is to create a NCAA team ranking system that is more accurate than the ranking systems currently in use.
+The goal of this analysis is to create a 2022 March Madness bracket by utilizing multiple publically avaliable team rating systems.
 
 **Project Description:**
 
-This project uses historical team rankings and historical tournament performance to weight the importance of various team rankings and thereby create a new hybrid team ranking system to predict the outcome of March Madness 2022.
+This project utilizes historical team ratings and historical tournament game results to construct a linear regression which weighs the importance of various team ratings and creates a hybrid team ranking system, which we use to predict the outcome of March Madness 2022.
 
 **Reproducing the Analysis:**
 
