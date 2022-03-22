@@ -54,6 +54,7 @@ We predict that in any given matchup the team with the higher ranking will win a
 **Findings:**
 
 From this project we predict that Gonzaga will win the March Madness tounament.
+Our model picked 16/32 round 2 teams correctly and 8/16 sweet 16 teams correctly.
 Our predicted bracket is included in our visualizations.
 
 **Limitations:**
