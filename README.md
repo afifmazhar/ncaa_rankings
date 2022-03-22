@@ -46,7 +46,7 @@ pts_team1 - pts_team2 = b0 + b1(OSRS1) + b2(OSRS2) + b3(DSRS1) + b4(DSRS2) + b5(
 
 This will give us the proper weighting of OSRS, DSRS, and seed_diff for our own rankings.
 
-The formula for our rating will be as follows: rank_team1 = b1(OSRS1) + b3(DSRS1) + seed_diff
+The formula for our rating will be as follows: rank_team1 = b1(OSRS1) + b3(DSRS1) + b5(seed_diff)
 
 Once we have our formula, all 2022 March Madness teams will have their SRSs and seed_diff run through the formula so that we can determine each teams ranking.
 We predict that in any given matchup the team with the higher ranking will win and that the team with the highest overall ranking will win the tournament.
