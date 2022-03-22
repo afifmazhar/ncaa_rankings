@@ -1,14 +1,20 @@
-# Install PrettyTable with: pip install PrettyTable.
+# Install Plotly with: pip install plotly==5.6.0
 
-from prettytable import PrettyTable as pt
+import plotly.graph_objects as pt
 import os
 import pandas as pd
 
-g_results = pd.read_csv(os.path.join('data', 'clean', 'game_results_clean.csv'))
+g_results = pd.read_csv(os.path.join('data', 'clean', 'winners.csv'), names= ['Game_Num', 'Winning_Team'])
 
-mmad_tabe = pt(['a', 'b', 'c'])
-mmad_tabe.add_row(g_results[])
+winner_table = pt.Figure(data= [pt.Table(header=dict(values=list(g_results.columns), fill_color = 'darkorange', align='center', font=dict(size=16)),
+cells=dict(values=[g_results['Game_Num'], g_results['Winning_Team']], fill_color = 'lavender', font=dict(size=11)))]) 
 
-print(mmad_tabe)
+winner_table.show()
+
+
+
+
+
+
 
 
