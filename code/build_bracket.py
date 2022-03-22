@@ -1,5 +1,6 @@
 import pandas as pd
 import csv
+import os
 
 INPUT_DIR = os.path.join("data", "clean")
 OUTPUT_DIR = os.path.join("data", "clean")
