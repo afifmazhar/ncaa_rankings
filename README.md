@@ -9,6 +9,16 @@ The goal of this analysis is to create a NCAA team ranking system that is more a
 
 This project uses historical team rankings and historical tournament performance to weight the importance of various team rankings and thereby create a new hybrid team ranking system to predict the outcome of March Madness 2022.
 
+**Reproducing the Analysis:**
+
+The first step in our analysis involves cleaning the raw historical tournament game results by running `python3 code/game_results.py` and cleaning / merging historical SRS ratings data by running `python3 code/clean-merge-srs.py`. This produces two clean .csv files (`data/clean/game_results_clean.csv` and `data/clean/team-ratings.csv`) which contain historical tournament game results from 1994-2019 and historical SRS ratings for all division I NCAA basketball teams over the same period. 
+
+Next, we merge each team's SRS data with our historical tournament game results by running `python3 code/combine-games-with-srs.py`. This appends team1 and team2 SRS data (both offensive and defensive) to the `data/clean/game_results_clean.csv` file. 
+
+We then compute our regression by running `python3 code/regression.py`. This creates a .csv file of our regression coefficients (`data/clean/coefficients.csv`) which feeds into our analysis of the 2022 March Madness bracket. 
+
+Finally, running `python3 code/bracket-read-file.py` creates `data/clean/bracket_data.csv` which combines 2022 SRS data (again, offensive and defensive) with the 2022 tournament bracket. Running `python3 code/build_bracket.py` makes use of this 2022 bracket data (along with our regression coefficients from above) and determines the winners of each tournament matchup. The script creates two output .csv files (`data/clean/matchups.csv` and `data/clean/winners.csv`) which store the predicted tournaments matchups and winners for each game of the 2022 March Madness tournament.
+
 **Data:**
 
 The documentation of the ratings data can be briefly summarized. 
@@ -26,11 +36,6 @@ We use the scores by each team to generate a score differential variable and the
 Not included in the data set is outside team rankings or player information, necessitating a merge with the SRS data.
 
 The game data used is all March Madness games from 1994 to 2019. This data was downloaded from - https://apps.washingtonpost.com/sports/search/
-
-**Limitations of Data:**
-
-Our data is limited by the fact that it conatains only team metrics.
-This data would be more accurate and comprehensive if it included information about individual players and injuries.
 
 **Cleaning:**
 
@@ -62,6 +67,9 @@ Our predicted bracket is included in our visualizations.
 The primary limitation is the ammount of data included in out model. 
 Since we do not have access to detailed data on injuries, game-plans, or player strengths our rankings overly rely on team metrics.
 Additionally, our analysis predicts that a higher ranked team will always beat a lower ranked team instead of generating a probability.
+
+Additionally, our data is limited by the fact that it conatains only team metrics.
+This data would be more accurate and comprehensive if it included information about individual players and injuries.
 
 **Extensions:**
 
