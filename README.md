@@ -48,13 +48,13 @@ The cleaned and merged CSV will follow the format - year,round,team1,seed1,score
 
 **Analysis & Methodology:**
 
-Once every team in every historical game is associated with its two ratings in each given year, we use an OLS regression where score differential is regressed on the SRS and RPI of teams one and two.
+Once each team in every historical game is associated with its ratings in each year, we use an OLS regression where score differential is regressed on the OSRS, DSRS and seed differential of the teams. We initially included historical RPI ratings in our analysis but decided to drop the variable when it did not add any predictive power alongside SRS. Attempts were made to include BPI (ESPN proprietary rating) and NRtg (avaliable via the same source as SRS) but historical avaliability issues lead to their exclusion.
 
-pts_team1 - pts_team2 = b0 + b1(OSRS1) + b2(OSRS2) + b3(DSRS1) + b4(DSRS2) + b5(seed_diff) + e
+pts_team1 - pts_team2 = b1(team1_OSRS) + b2(team2_OSRS) + b3(team1_DSRS) + b4(team2_DSRS) + b5(seed_diff) + e
 
-This will give us the proper weighting of OSRS, DSRS, and seed_diff for our own rankings.
+This will give us the proper weighting of OSRS, DSRS, and seed_diff to evaulate matchups in building our bracket.
 
-The formula for our rating will be as follows: rank_team1 = b1(OSRS1) + b3(DSRS1) + b5(seed_diff)
+To evaluate matchups in building the bracket, (b1-b2)/2 * (team1_OSRS) + (b1-b2)/2 * (team2_OSRS) + (b3-b4)/2 * (team1_DSRS) + (b3-b4)/2 * (team2_DSRS) + b5 is evaluated. When the sum is >0, team 1 is predicted to win. The reason we average the absolute values of b1/b2 and b3/b4 is that there is no home field advantage in the tournament and it is arbitrary which team is team1 and which is team2, so we average the coefficients.
 
 Once we have our formula, all 2022 March Madness teams will have their SRSs and seed_diff run through the formula so that we can determine each teams ranking.
 We predict that in any given matchup the team with the higher ranking will win and that the team with the highest overall ranking will win the tournament.
@@ -62,14 +62,14 @@ We predict that in any given matchup the team with the higher ranking will win a
 **Findings:**
 
 From this project we predict that Gonzaga will win the March Madness tounament.
-Our model picked 16/32 round 2 teams correctly and 8/16 sweet 16 teams correctly.
-Our predicted bracket is included in our visualizations.
+Our model picked 23/32 round 1 winners correctly and 9/16 of the round 2 winners correctly.
+Our predicted bracket is included in our visualizations. We find that the weighting for defensive SRS is slightly higher than coefficient for offensive SRS (lending credence to the idea that defense wins championships).  
 
 **Limitations:**
 
 The primary limitation is the ammount of data included in out model. 
 Since we do not have access to detailed data on injuries, game-plans, or player strengths our rankings overly rely on team metrics.
-Additionally, our analysis predicts that a higher ranked team will always beat a lower ranked team instead of generating a probability.
+Additionally, our analysis determines a strict ranking for teams instead of modeling win percentage for any given matchup.
 
 Additionally, our data is limited by the fact that it conatains only team metrics.
 This data would be more accurate and comprehensive if it included information about individual players and injuries.
@@ -78,4 +78,4 @@ This data would be more accurate and comprehensive if it included information ab
 
 This project could be extended with the inclusion of more detailed data on teams and players to create a more accurate ranking. 
 Another possibility is that this formula could be applied to other sports to see if this ranking systems is valid accross different athletic events.
-This analysis could also be extended by generating a ranking system that gives the probability a higher ranked team will beat a lower ranked team, rather than a binary outcome.
+This analysis could also be extended by generating a probability that a higher ranked team will beat a lower ranked team, rather than a binary outcome.
