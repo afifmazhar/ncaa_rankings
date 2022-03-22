@@ -3,11 +3,11 @@ Data Analysis Project for NCAA rankings
 
 **Goal of the Analysis:**
 
-The goal of this analysis is to create a 2022 March Madness bracket by utilizing multiple publicly avaliable team rating systems.
+The goal of this analysis is to create a predictive 2022 March Madness bracket by utilizing multiple publicly avaliable team rating systems.
 
 **Project Description:**
 
-This project utilizes historical team ratings and historical tournament game results to construct a linear regression which weighs the importance of various team ratings and creates a hybrid team ranking system, which we use to predict the outcome of March Madness 2022.
+This project utilizes historical team ratings and historical tournament game results to construct a linear regression which weights the importance of various team ratings and creates a hybrid team ranking system, which we use to predict the outcomes of March Madness 2022.
 
 **Reproducing the Analysis:**
 
@@ -20,7 +20,7 @@ We then compute our regression by running `python3 code/regression.py`. This cre
 Finally, running `python3 code/bracket-read-file.py` creates `data/clean/bracket_data.csv` which combines 2022 SRS data (again, offensive and defensive) with the 2022 tournament bracket. Running `python3 code/build_bracket.py` makes use of this 2022 bracket data (along with our regression coefficients from above) and determines the winners of each tournament matchup. The script creates two output .csv files (`data/clean/matchups.csv` and `data/clean/winners.csv`) which store the predicted tournaments matchups and winners for each game of the 2022 March Madness tournament.
 
 You'll need to install the package, Plotly, from the `Requiements.txt` file via the included pip command.
-To re-create the data tables, run `python3 code/visual_code/data-table-matchups.py` to obtain a table for all tournament game matchups.  Likewise, run `python3 code/visual_code/final-data-table.py` to obtain a table for the winners of eery tournament game.
+To re-create the data tables, run `python3 code/visual_code/data-table-matchups.py` to obtain a table for all tournament game matchups.  Likewise, run `python3 code/visual_code/final-data-table.py` to obtain a table for the winners of every tournament game.
 
 **Data:**
 
@@ -57,7 +57,7 @@ This will give us the proper weighting of OSRS, DSRS, and seed_diff to evaulate 
 To evaluate matchups in building the bracket, (b1-b2)/2 * (team1_OSRS) + (b1-b2)/2 * (team2_OSRS) + (b3-b4)/2 * (team1_DSRS) + (b3-b4)/2 * (team2_DSRS) + b5 is evaluated. When the sum is >0, team 1 is predicted to win. The reason we average the absolute values of b1/b2 and b3/b4 is that there is no home field advantage in the tournament and it is arbitrary which team is team1 and which is team2, so we average the coefficients.
 
 Once we have our formula, all 2022 March Madness teams will have their SRSs and seed_diff run through the formula so that we can determine each teams ranking.
-We predict that in any given matchup the team with the higher ranking will win and that the team with the highest overall ranking will win the tournament.
+We predict that in any given matchup the team with the higher ranking will win. 
 
 **Findings:**
 
