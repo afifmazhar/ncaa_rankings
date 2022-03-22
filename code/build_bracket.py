@@ -55,10 +55,14 @@ def build_bracket():
     bracket. There is no argument or return value. The dataframe is must be properly scoped so that the function can
     access it."""
 
-    matchup_dict[1] = df.index[(df["region"] == region_dict[1]) & (df['seed'] == 11)].values[:]
-    matchup_dict[2] = df.index[(df["region"] == region_dict[2]) & (df["seed"] == 12)].values[:]
-    matchup_dict[3] = df.index[(df["region"] == region_dict[3]) & (df["seed"] == 16)].values[:]
-    matchup_dict[4] = df.index[(df["region"] == region_dict[4]) & (df["seed"] == 16)].values[:]
+    matchup_dict[1] = [df.index[(df["region"] == region_dict[1]) & (df['seed'] == 11)].values[0],
+                       df.index[(df["region"] == region_dict[1]) & (df['seed'] == 11)].values[1]]
+    matchup_dict[2] = [df.index[(df["region"] == region_dict[2]) & (df['seed'] == 12)].values[0],
+                       df.index[(df["region"] == region_dict[2]) & (df['seed'] == 12)].values[1]]
+    matchup_dict[3] = [df.index[(df["region"] == region_dict[3]) & (df['seed'] == 16)].values[0],
+                       df.index[(df["region"] == region_dict[3]) & (df['seed'] == 16)].values[1]]
+    matchup_dict[4] = [df.index[(df["region"] == region_dict[4]) & (df['seed'] == 16)].values[0],
+                       df.index[(df["region"] == region_dict[4]) & (df['seed'] == 16)].values[1]]
 
     pick_round(1, 5)
 
