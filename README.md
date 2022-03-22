@@ -11,11 +11,21 @@ This project uses historical team rankings and historical tournament performance
 
 **Data:**
 
-_summarize the documentation of the data, make sure that you understand and document all columns/features that are relevant to your analysis. You should understand and summarize what isn’t in the data too._
+The documentation of the ratings data can be briefly summarized. 
+In the SRS data set each team in each year is an obeservation.
+The columns are each overservation rated according to several metrics. 
+The metric we use is OSRS which is Offensive Simple Rating System and DSRS which is Defensive Simple Rating System.
+This system is derived from point differential weighted by strength of opponent. 
+Not included in this data is anything about tournnament performance or player stats and injuries.
 
-The ranking data used is SRS Team Ratings and RPI team ratings from 1994 to 2019. This data was downloaded from - https://www.sports-reference.com/cbb/seasons/2022-ratings.html & 
+The ranking data used is SRS Team Ratings team ratings from 1994 to 2019. This data was downloaded from - https://www.sports-reference.com/cbb/seasons/2022-ratings.html
 
-The game data used is all March Madness games from 1994 to 2019. This data was downloaded from - LINK
+The documentation for the game data can be briefly sumarized.
+This data set includes every March Madness tournament game from 1994 to 2019 as observations.
+We use the scores by each team to generate a score differential variable and the seeds of each team to generate a seed differential.
+Not included in the data set is outside team rankings or player information, necessitating a merge with the SRS data.
+
+The game data used is all March Madness games from 1994 to 2019. This data was downloaded from - https://www.sports-reference.com/cbb/postseason/index.html
 
 **Limitations of Data:**
 
@@ -26,25 +36,25 @@ This data would be more accurate and comprehensive if it included information ab
 
 Data sets are cleaned of erroneous lines, hyperlinks, and superflous columns.
 Data frames are then merged, matching team names to their ratings for each historical March Madness game.
-The cleaned and merged CSV will follow the format - year,round,team1,seed1,score1,team2,seed2,score2,score_diff,SRS1,RPI1,SRS2,RPI2
+The cleaned and merged CSV will follow the format - year,round,team1,seed1,score1,team2,seed2,score2,score_diff,seed_diff,OSRS1,DSRS1,OSRS2,DSRS2
 
 **Analysis & Methodology:**
 
 Once every team in every historical game is associated with its two ratings in each given year, we use an OLS regression where score differential is regressed on the SRS and RPI of teams one and two.
 
-pts_team1 - pts_team2 = b0 + b1(SRS1) + b2(SRS2) + b3(RPI1) + b4(RPI2) + e
+pts_team1 - pts_team2 = b0 + b1(OSRS1) + b2(OSRS2) + b3(DSRS1) + b4(DSRS2) + b5(seed_diff) + e
 
-This will give us the proper weighting of SRS and RPI for our own rankings.
+This will give us the proper weighting of OSRS, DSRS, and seed_diff for our own rankings.
 
-The formula for our rating will be as follows: rank_team1 = b1(SRS1) + b3(RPI1)
+The formula for our rating will be as follows: rank_team1 = b1(OSRS1) + b3(DSRS1) + seed_diff
 
-Once we have our formula, all 2022 March Madness teams will have their SRS and RPI run through the formula so that we can determine each teams ranking.
+Once we have our formula, all 2022 March Madness teams will have their SRSs and seed_diff run through the formula so that we can determine each teams ranking.
 We predict that in any given matchup the team with the higher ranking will win and that the team with the highest overall ranking will win the tournament.
 
 **Findings:**
 
-From this project we predict that X TEAM will win the March Madness tounament.
-Compared to current actual performance our bracket is X% accurate.
+From this project we predict that Gonzaga will win the March Madness tounament.
+Our predicted bracket is included in our visualizations.
 
 **Limitations:**
 
