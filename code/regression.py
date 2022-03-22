@@ -5,6 +5,7 @@ import numpy as np
 from sklearn import linear_model
 from sklearn.linear_model import LinearRegression
 
+## load game_results_clean datafile
 game_results = pd.read_csv("data/clean/game_results_clean.csv", encoding = "ISO-8859-1")
 
 ## linear regression with score_diff being the y (target) variable and the others being x variables
