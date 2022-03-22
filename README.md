@@ -3,7 +3,7 @@ Data Analysis Project for NCAA rankings
 
 **Goal of the Analysis:**
 
-The goal of this analysis is to create a 2022 March Madness bracket by utilizing multiple publically avaliable team rating systems.
+The goal of this analysis is to create a 2022 March Madness bracket by utilizing multiple publicly avaliable team rating systems.
 
 **Project Description:**
 
