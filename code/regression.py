@@ -7,7 +7,7 @@ from sklearn.linear_model import LinearRegression
 
 game_results = pd.read_csv("data/clean/game_results_clean.csv", encoding = "ISO-8859-1")
 
-## linear regression with score_diff being the y variable and the others being x variables
+## linear regression with score_diff being the y (target) variable and the others being x variables
 x = game_results[["team1_osrs", "team1_dsrs", "team2_osrs", "team2_dsrs", "seed_diff"]]
 y = game_results["score_diff"]
 
