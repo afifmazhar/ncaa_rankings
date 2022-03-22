@@ -25,7 +25,7 @@ This data set includes every March Madness tournament game from 1994 to 2019 as 
 We use the scores by each team to generate a score differential variable and the seeds of each team to generate a seed differential.
 Not included in the data set is outside team rankings or player information, necessitating a merge with the SRS data.
 
-The game data used is all March Madness games from 1994 to 2019. This data was downloaded from - https://www.sports-reference.com/cbb/postseason/index.html
+The game data used is all March Madness games from 1994 to 2019. This data was downloaded from - https://apps.washingtonpost.com/sports/search/
 
 **Limitations of Data:**
 
@@ -54,6 +54,7 @@ We predict that in any given matchup the team with the higher ranking will win a
 **Findings:**
 
 From this project we predict that Gonzaga will win the March Madness tounament.
+Our model picked 16/32 round 2 teams correctly and 8/16 sweet 16 teams correctly.
 Our predicted bracket is included in our visualizations.
 
 **Limitations:**
